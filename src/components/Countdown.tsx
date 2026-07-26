@@ -31,6 +31,7 @@ export default function Countdown({ birthDate }: CountdownProps) {
       {duration.days} days{" "}
       {duration.hours} hours{" "}
       {duration.minutes} minutes{" "}
+      {duration.seconds} seconds
     </div>
   );
 }
