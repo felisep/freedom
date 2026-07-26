@@ -21,13 +21,10 @@ jobs:
         cache: 'npm'
 
     - name: Install Project Dependencies
-      run: npm ci
+      run: npm ci 
 
-    - name: Compile Production Build
-      run: npm run build
-
-#    - name: Run Code Linter
-#      run: npm run lint --if-present
+    - name: Run Code Biome
+      run: npm run check
 
     - name: Execute Unit Tests
       run: npm test -- --watchAll=false --passWithNoTests
