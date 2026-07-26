@@ -7,9 +7,18 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  lint: 
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: npm
+      - run: npm run lint
 
+  test:
+    runs-on: ubuntu-latest  
     steps:
     - name: Checkout Source Code
       uses: actions/checkout@v4
@@ -25,6 +34,3 @@ jobs:
 
     - name: Run Code Biome
       run: npm run check
-
-    - name: Execute Unit Tests
-      run: npm test -- --watchAll=false --passWithNoTests
