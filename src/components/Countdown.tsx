@@ -27,8 +27,7 @@ export default function Countdown({ birthDate }: CountdownProps) {
 	return (
 		<div>
 			{duration.years} years {duration.months} months {duration.days} days{" "}
-			{duration.hours} hours {duration.minutes} minutes {duration.seconds}{" "}
-			seconds
+			{duration.hours} hours {duration.minutes} minutes
 		</div>
 	);
 }
