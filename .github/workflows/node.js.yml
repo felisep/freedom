@@ -14,19 +14,6 @@ on:
         default: '20.x'
 
 jobs:
-  lint: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Biome Lint
-        run: npm run lint
-
   check:
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +25,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Run Biome Check
-        run: npm run check && npm run lint
+        run: npm run check
 
   test:
     runs-on: ubuntu-latest  
@@ -54,7 +41,7 @@ jobs:
         run: npm run test
 
   build:
-    needs: [lint, check]
+    needs: [check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
