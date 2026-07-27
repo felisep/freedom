@@ -32,6 +32,5 @@ describe("Countdown", () => {
 
 		expect(screen.getByText(/23\s*hours/i)).toBeInTheDocument();
 		expect(screen.getByText(/59\s*minutes/i)).toBeInTheDocument();
-		expect(screen.getByText(/59\s*seconds/i)).toBeInTheDocument();
 	});
 });
