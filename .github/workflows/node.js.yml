@@ -1,55 +1,8 @@
 name: React CI Pipeline
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_call:
-    inputs:
-      node-version:
-        description: 'Node.js version to use'
-        required: false
-        type: string
-        default: '20.x'
+on: [pull_request, push]
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Biome Check
-        run: npm run check
-
-  test:
-    runs-on: ubuntu-latest  
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run test
-        run: npm run test
-
-  build:
-    needs: [check]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Build Project
-        run: npm run build
+  use_reusable_workflow:
+    uses: felisep/common_workflows/.github/workflows/common-node.yml@main
+    with:
+      node-version: "22"
