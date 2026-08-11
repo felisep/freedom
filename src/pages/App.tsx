@@ -7,17 +7,12 @@ const LBirthDate = new Date(2014, 4, 13);
 const EBirthDate = new Date(2026, 5, 29);
 // Set to true to show the Lived component, false to hide it
 
-function clickingSomething() {
-	console.log("clicked");
-}
-
 function App() {
 	const [showLived, setShowLived] = useState(true);
 	const handleToggle = () => setShowLived(!showLived);
 
 	return (
 		// biome-ignore lint/a11y/noStaticElementInteractions: for testing only
-		// biome-ignore lint/a11y/useKeyWithClickEvents: for testing only
 		<div className="App" onClick={handleToggle} onKeyDown={handleToggle}>
 			<header className="App-header">
 				<div className="countdown">
