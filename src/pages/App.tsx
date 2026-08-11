@@ -5,7 +5,6 @@ import Lived from "../components/Lived";
 
 const LBirthDate = new Date(2014, 4, 13);
 const EBirthDate = new Date(2026, 5, 29);
-// Set to true to show the Lived component, false to hide it
 
 function App() {
 	const [showLived, setShowLived] = useState(true);
