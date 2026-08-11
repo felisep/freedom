@@ -20,9 +20,11 @@ const Lived = ({ birthDate }: { birthDate: Date }) => {
 		end: now,
 	});
 
+	const yearsAppear = duration.years !== undefined ? duration.years : 0;
+
 	return (
 		<div>
-			{duration.years} years {duration.months} months {duration.days} days{" "}
+			{yearsAppear} years {duration.months} months {duration.days} days{" "}
 			{duration.hours} hours {duration.minutes} minutes <b>since birth</b>
 		</div>
 	);
