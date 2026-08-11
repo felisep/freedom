@@ -1,13 +1,9 @@
 import { intervalToDuration } from "date-fns/intervalToDuration";
 import { useEffect, useState } from "react";
 
-type CountdownProps = {
-	birthDate: Date;
-};
-
-export default function Countdown({ birthDate }: CountdownProps) {
+const Lived = ({ birthDate }: { birthDate: Date }) => {
 	const targetDate = new Date(birthDate);
-	targetDate.setFullYear(targetDate.getFullYear() + 18);
+	targetDate.setFullYear(targetDate.getFullYear());
 
 	const [now, setNow] = useState(new Date());
 
@@ -20,15 +16,16 @@ export default function Countdown({ birthDate }: CountdownProps) {
 	}, []);
 
 	const duration = intervalToDuration({
-		start: now,
-		end: targetDate,
+		start: targetDate,
+		end: now,
 	});
 
 	return (
 		<div>
 			{duration.years} years {duration.months} months {duration.days} days{" "}
-			{duration.hours} hours {duration.minutes} minutes{" "}
-			<b>until 18th birthday</b>
+			{duration.hours} hours {duration.minutes} minutes <b>since birth</b>
 		</div>
 	);
-}
+};
+
+export default Lived;
